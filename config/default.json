@@ -9,5 +9,29 @@
   "postgres": {
     "client": "pg",
     "connection": "postgres://postgres:@localhost:5432/net_map"
+  },
+  "authentication": {
+    "secret": "6c118d463f270eb14693ba25bc3f05b9ded993a676dd5bf39221c53ba13012a4c33bcb0e53205e88d31e4732b8a480610672b083a1f88c8afb5e580212675b9d3f68cbafd5d347533bb6de035e7a1d97af963bd82bcf7f59cfb464c037a9051f98a3c2e5598ea6b2c192897caa9bf601b14c96d680c989b8cb943ea4d2d3e95eeda98b49ea9f7603ed20139e87106bec96f0d795c5774cd69963479e8cc4420add577ae3620dc972317fd7f4040d3d5f0907c4612864fe21766bbe1d51b097619adf660c32a3b79438d4e502beec823bbbef1b927f8cec0edb9ed186af7743282c2a41e51dcd0796b46088f60b427d39a034dca989d9da715f8435cf847c3ebc",
+    "strategies": [
+      "jwt",
+      "local"
+    ],
+    "path": "/authentication",
+    "service": "users",
+    "jwt": {
+      "header": {
+        "typ": "access"
+      },
+      "audience": "https://yourdomain.com",
+      "subject": "anonymous",
+      "issuer": "feathers",
+      "algorithm": "HS256",
+      "expiresIn": "1d"
+    },
+    "local": {
+      "entity": "user",
+      "usernameField": "email",
+      "passwordField": "password"
+    }
   }
 }
